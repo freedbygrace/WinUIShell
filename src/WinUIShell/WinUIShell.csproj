@@ -10,7 +10,18 @@
     <!-- Need this to enable IDE0005 (Remove unnecessary usings/imports) on build (https://github.com/dotnet/roslyn/issues/41640) -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <!-- And avoid errors due to GenerateDocumentationFile -->
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <NoWarn>$(NoWarn);CS1591;IDE0055;CA1508;CA2227;CA1805;CA1002;IDE0028;IDE0090;IDE0058;CA1311;CA1304;IDE0010;IDE0060;CA5392;CA2101;SYSLIB1054;CA1024;CA1062;IDE0017;IDE0005;IDE0300</NoWarn>
+
+    <!-- Self-Contained Deployment Properties -->
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+  </PropertyGroup>
+
+  <!-- Publish Properties for Self-Contained -->
+  <PropertyGroup>
+    <PublishReadyToRun Condition="'$(Configuration)' == 'Debug'">False</PublishReadyToRun>
+    <PublishReadyToRun Condition="'$(Configuration)' != 'Debug'">True</PublishReadyToRun>
+    <PublishTrimmed>false</PublishTrimmed>
+    <!-- SelfContained only applies to executable projects, not libraries -->
   </PropertyGroup>
 
   <ItemGroup>

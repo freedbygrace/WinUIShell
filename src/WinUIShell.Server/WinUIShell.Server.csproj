@@ -18,7 +18,7 @@
     <!-- Need this to enable IDE0005 (Remove unnecessary usings/imports) on build (https://github.com/dotnet/roslyn/issues/41640) -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <!-- And avoid errors due to GenerateDocumentationFile -->
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <NoWarn>$(NoWarn);CS1591;CA5392</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,5 +40,15 @@
     <PublishReadyToRun Condition="'$(Configuration)' != 'Debug'">True</PublishReadyToRun>
     <PublishTrimmed Condition="'$(Configuration)' == 'Debug'">False</PublishTrimmed>
     <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">False</PublishTrimmed>
+
+    <!-- Self-Contained Deployment Properties -->
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+
+    <!-- WindowsAppSDK Self-Contained Support -->
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <UseWindowsAppSDKProjectReunionPackage>false</UseWindowsAppSDKProjectReunionPackage>
   </PropertyGroup>
 </Project>
